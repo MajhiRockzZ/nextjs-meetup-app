@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Navigation from './Navigation';
 
 const Layout = ({ children }) => {
   return (
     <Wrapper>
+      <Navigation />
       <main>{children}</main>
     </Wrapper>
   );
