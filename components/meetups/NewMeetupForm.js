@@ -1,27 +1,55 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import Card from '../ui/Card';
 
-const NewMeetupForm = () => {
+const NewMeetupForm = ({ onAddMeetup }) => {
+  const titleInputRef = useRef();
+  const imageInputRef = useRef();
+  const addressInputRef = useRef();
+  const descriptionInputRef = useRef();
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const enteredTitle = titleInputRef.current.value;
+    const enteredImage = imageInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+
+    const meetupData = {
+      title: enteredTitle,
+      image: enteredImage,
+      address: enteredAddress,
+      description: enteredDescription,
+    };
+
+    onAddMeetup(meetupData);
+  };
+
   return (
     <Card>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <div className='control'>
           <label htmlFor='title'>Title</label>
-          <input type='text' id='title' required />
+          <input type='text' id='title' required ref={titleInputRef} />
         </div>
         <div className='control'>
           <label htmlFor='image'>Image</label>
-          <input type='url' id='image' required />
+          <input type='url' id='image' required ref={imageInputRef} />
         </div>
         <div className='control'>
           <label htmlFor='address'>Address</label>
-          <input type='text' id='address' required />
+          <input type='text' id='address' required ref={addressInputRef} />
         </div>
         <div className='control'>
           <label htmlFor='descriptiion'>Description</label>
-          <textarea id='description' rows='5' required></textarea>
+          <textarea
+            id='description'
+            rows='5'
+            required
+            ref={descriptionInputRef}
+          ></textarea>
         </div>
         <div className='actions'>
           <button>Add Meetup</button>
