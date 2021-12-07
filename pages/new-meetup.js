@@ -1,10 +1,11 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
+import NewMeetupForm from '../components/meetups/NewMeetupForm';
 
 const NewMeetupPage = () => {
   return (
     <Layout>
-      <h1>Add New Meetup</h1>
+      <NewMeetupForm />
     </Layout>
   );
 };
