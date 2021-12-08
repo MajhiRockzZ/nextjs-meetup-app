@@ -3,7 +3,6 @@ import React from 'react';
 import MeetupList from '../components/meetups/MeetupList';
 
 const HomePage = ({ meetups }) => {
-  console.log(meetups);
   return <MeetupList meetups={meetups} />;
 };
 
@@ -17,7 +16,6 @@ export async function getStaticProps() {
   const meetupsCollection = db.collection('meetups');
 
   const meetups = await meetupsCollection.find().toArray();
-  console.log(meetups);
 
   client.close();
 

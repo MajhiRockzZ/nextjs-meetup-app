@@ -2,8 +2,15 @@ import React from 'react';
 import Card from '../ui/Card';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
-const MeetupItem = ({ data: { image, title, address } }) => {
+const MeetupItem = ({ data: { id, image, title, address } }) => {
+  const router = useRouter();
+
+  const showDetailsHandler = () => {
+    router.push('/' + id);
+  };
+
   return (
     <Item>
       <Card>
@@ -15,7 +22,7 @@ const MeetupItem = ({ data: { image, title, address } }) => {
           <address>{address}</address>
         </div>
         <div className='actions'>
-          <button>Show Details</button>
+          <button onClick={showDetailsHandler}>Show Details</button>
         </div>
       </Card>
     </Item>
