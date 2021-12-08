@@ -1,9 +1,21 @@
 import { MongoClient } from 'mongodb';
 import React from 'react';
 import MeetupList from '../components/meetups/MeetupList';
+import Head from 'next/head';
 
 const HomePage = ({ meetups }) => {
-  return <MeetupList meetups={meetups} />;
+  return (
+    <>
+      <Head>
+        <title>Meetups</title>
+        <meta
+          name='description'
+          content='Browse a huge list of highly active React meetups!'
+        />
+      </Head>
+      <MeetupList meetups={meetups} />
+    </>
+  );
 };
 
 export async function getStaticProps() {
