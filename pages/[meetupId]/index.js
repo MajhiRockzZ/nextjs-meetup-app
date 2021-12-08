@@ -47,4 +47,6 @@ export async function getStaticProps(context) {
   };
 }
 
+// npm install mongodb
+
 export default MeetupDetails;
